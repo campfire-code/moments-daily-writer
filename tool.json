@@ -1,0 +1,13 @@
+{
+  "id": "w11",
+  "slug": "moments-daily-writer",
+  "name": "朋友圈文案日更",
+  "version": "0.1.0",
+  "repo": "campfire-code/moments-daily-writer",
+  "license": "MIT",
+  "ui": {
+    "layout": "f",
+    "palette": "violet"
+  },
+  "upstream": null
+}
