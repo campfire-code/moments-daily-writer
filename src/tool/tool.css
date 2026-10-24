@@ -1,0 +1,48 @@
+/* 朋友圈文案日更：布局 f（顶部标签）。只用 kit.css 的变量，类名以 mm- 开头。
+   焦点：一条条像朋友圈动态的卡片——日期大字、正文气泡、配图占位格、评论区首评。 */
+.L-f .k-cards { grid-template-columns: 1fr; gap: 14px; max-width: 760px; margin: 0 auto; }
+.L-f .k-card-body { padding: 14px 16px 6px; }
+.mm-sub { margin: 0; color: var(--muted); }
+
+.mm-post { display: grid; grid-template-columns: 64px 1fr; gap: 16px; }
+.mm-date { display: grid; align-content: start; justify-items: center; gap: 0; padding: 8px 0; border-radius: 12px; background: var(--primary-soft); height: fit-content; line-height: 1.15; }
+.mm-date b { font-size: 2em; font-weight: 800; color: var(--ink); }
+.mm-date span { font-size: .95em; color: var(--ink); }
+.mm-date em { font-style: normal; font-size: .9em; color: var(--muted); margin-top: 2px; }
+.mm-main { display: grid; gap: 10px; min-width: 0; }
+.mm-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.mm-tag { padding: 2px 10px; border-radius: 999px; background: var(--chip); color: var(--ink); font-size: .92em; }
+.mm-tag.time { background: transparent; border: 1px solid var(--line-strong); }
+.mm-tag.fest { background: var(--warn-soft); color: var(--warn); font-weight: 600; }
+.mm-copy { margin: 0; white-space: pre-wrap; font-size: 1.08em; line-height: 1.75; color: var(--ink); user-select: text; }
+.mm-img { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+.mm-grid { display: grid; grid-template-columns: repeat(3, 40px); gap: 4px; }
+.mm-grid[data-n="1"] { grid-template-columns: 84px; }
+.mm-grid[data-n="2"], .mm-grid[data-n="4"] { grid-template-columns: repeat(2, 40px); }
+.mm-tile { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1; min-height: 40px; border-radius: 4px; background: var(--chip); color: var(--muted); }
+.mm-grid[data-n="1"] .mm-tile { min-height: 84px; }
+.mm-tile i { position: absolute; right: 3px; bottom: 1px; font-style: normal; font-size: 11px; }
+.mm-img-t { flex: 1 1 200px; min-width: 0; color: var(--muted); font-size: .95em; line-height: 1.6; user-select: text; }
+.mm-img-t b, .mm-comment b { margin-right: 8px; color: var(--ink); }
+.mm-comment { display: flex; gap: 8px; align-items: flex-start; padding: 8px 12px; border-radius: 8px; background: var(--chip); font-size: .95em; line-height: 1.6; user-select: text; }
+.mm-comment svg { flex: none; margin-top: 4px; color: var(--muted); }
+
+.mm-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 16px 8px; text-align: center; border-radius: 14px; border: 2px dashed transparent; }
+.mm-empty.hover { border-color: var(--primary); }
+.mm-empty > svg { width: 100%; max-width: 620px; height: auto; }
+.mm-e-card { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.4; }
+.mm-e-k { font-size: 11px; fill: var(--muted); font-family: var(--font); }
+.mm-e-v { font-size: 12.5px; font-weight: 600; fill: var(--ink); font-family: var(--font); }
+.mm-e-arrow { fill: none; stroke: var(--primary); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.mm-e-step { fill: var(--primary-soft); stroke: var(--primary); stroke-width: 1.4; stroke-dasharray: 4 3; }
+.mm-e-st1 { font-size: 14px; font-weight: 700; fill: var(--ink); font-family: var(--font); }
+.mm-e-st2 { font-size: 11.5px; fill: var(--ink); font-family: var(--font); }
+.mm-e-day { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.2; }
+.mm-e-day.hot { fill: var(--warn-soft); stroke: var(--warn); }
+.mm-e-d { font-size: 20px; font-weight: 800; fill: var(--ink); font-family: var(--font); }
+.mm-e-w { font-size: 10.5px; fill: var(--muted); font-family: var(--font); }
+.mm-e-s { font-size: 11.5px; font-weight: 600; fill: var(--ink); font-family: var(--font); }
+.mm-e-title { font-size: 1.3em; color: var(--ink); margin-top: 4px; }
+.mm-e-sub { max-width: 520px; color: var(--muted); line-height: 1.7; }
+.mm-e-act { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: var(--primary-soft); color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) { .mm-post { grid-template-columns: 1fr; } .mm-date { grid-auto-flow: column; justify-content: start; gap: 8px; padding: 6px 12px; align-items: baseline; } }

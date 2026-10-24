@@ -4,6 +4,8 @@ import type { GenerateTool, Params, RunContext } from '../kit/types';
 import { isFatalLlmError, safeName } from './common';
 import { STYLES, buildMessages, fmt, formatPost, parseReply, parseStart, planPost, scheduleSheet, todayYmd, totalPosts, type Plan, type PlanOptions, type Post } from './core';
 import { writeXlsx } from './xlsx';
+import { Empty } from './Empty';
+import { ResultBody } from './Result';
 
 const clamp = (v: unknown, lo: number, hi: number, dflt: number) => Math.min(hi, Math.max(lo, Math.round(Number(v)) || dflt));
 
@@ -36,12 +38,14 @@ const tool: GenerateTool = {
   category: '微信私域',
   type: 'text',
   mode: 'generate',
-  resultView: 'text',
+  resultView: 'cards',
+  Empty,
+  ResultBody,
   needsLLM: true,
   concurrency: 2,
   generateLabel: '生成文案',
   params: [
-    { key: 'info', label: '商品 / 品牌信息', type: 'textarea', rows: 5, default: '', placeholder: '例如：小王家的 316 不锈钢保温杯，500ml，保温 12 小时，一键开盖。本周下单送杯套，两个包邮。目标客户是上班族和学生。' },
+    { key: 'info', label: '商品 / 品牌信息', type: 'textarea', rows: 5, default: '', placeholder: '例如：小王家的 316 不锈钢保温杯，500 毫升，保温 12 小时，一键开盖。本周下单送杯套，两个包邮。目标客户是上班族和学生。' },
     { key: 'style', label: '文案风格', type: 'select', options: STYLES, default: 'mix', help: '「每天轮换」会在种草、日常、促销之间换着写，朋友圈不容易显得刷屏' },
     { key: 'days', label: '生成几天', type: 'number', default: 7, min: 1, max: 30, unit: '天' },
     { key: 'perDay', label: '每天几条', type: 'number', default: 1, min: 1, max: 3, unit: '条', help: '每条调用一次大模型，天数 × 条数越多费用越高' },
